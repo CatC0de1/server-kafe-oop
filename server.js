@@ -20,7 +20,7 @@ const ItemSchema = new mongoose.Schema({
     image: String,
 });
 
-const Item = mongoose.model('Item', ItemSchema);
+// const Item = mongoose.model('Item', ItemSchema);
 
 function loadKafeData() {
     const filePath = path.join(__dirname, 'kafe.json');

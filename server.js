@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const cors = require('cors');
 const path = require('path');
+const { types } = require('util');
 const app = express();
 const port = 3003;
 
@@ -15,9 +16,12 @@ app.use(cors({
 
 const ItemSchema = new mongoose.Schema({
     name: String,
-    description: String,
     price: String,
+    availability: Boolean,
+    description: String,
     image: String,
+    types: Boolean,
+    cold: Boolean
 });
 
 // const Item = mongoose.model('Item', ItemSchema);
@@ -37,13 +41,13 @@ app.get('/api/kafe', (req, res) => {
     }
 });
 
-mongoose.connect('mongodb://localhost:27017/Kafe', {
+mongoose.connect('mongodb+srv://catcode0101:1234admin@cluster0.ojr60.mongodb.net/Kafe?retryWrites=true&w=majority', {
     // useNewUrlParser: true,
     // useUnifiedTopology: true,
 }). then(() => {
-    console.log('Berhasil terkoneksi ke MongoDB');
+    console.log('Berhasil terkoneksi ke MongoDB Atlas');
 }). catch((err) => {
-    console.log('Gagal terkoneksi ke MongoDB');
+    console.log('Gagal terkoneksi ke MongoDB Atlas');
 });
 
 app.use(bodyParser.json());
